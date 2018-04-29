@@ -76,7 +76,7 @@ int lines()
     IplImage* color_dst=0;
 
     // имя картинки задаётся первым параметром
-    char* filename = const_cast<char *>("../picture/33.jpg");
+    char* filename = const_cast<char *>("../picture/777.jpg");
     // получаем картинку (в градациях серого)
     src = cvLoadImage(filename, CV_LOAD_IMAGE_GRAYSCALE);
 
@@ -104,7 +104,7 @@ int lines()
     cvCvtColor( dst, color_dst, CV_GRAY2BGR );
 
     // нахождение линий
-    lines = cvHoughLines2( dst, storage, CV_HOUGH_PROBABILISTIC, 1, CV_PI/120, 25, 25, 10 );
+    lines = cvHoughLines2( dst, storage, CV_HOUGH_PROBABILISTIC, 1, CV_PI/120, 25, 20, 10 );
 
     // нарисуем найденные линии
 //    for( i = 0; i < lines->total; i++ ){
@@ -157,7 +157,7 @@ int lines()
                 double dist = sqrt( pow(c2x - c1x, 2) + pow(c2y - c1y, 2) );
 
                 // максимальная дистанция между векторами (их серединами)
-                if (dist > 25 && dist < 500) {
+                if (dist > 25 && dist < 100) {
                     customRect cR = {subGroup.at(k), subGroup.at(j)};
                     rectGroup.at(group).push_back(cR);
                 }
